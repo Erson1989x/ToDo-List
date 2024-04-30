@@ -6,6 +6,7 @@ const completedButton = document.querySelector(`.filter-completed`);
 const allButton = document.querySelector(`.filter-all`);
 const activeButton = document.querySelector(`.filter-active`);
 const clearButton = document.querySelector(`.clear-completed`);
+const filterButtons = document.querySelectorAll(`.filter-buttons button`)
 
 //numere de taskuri
 
@@ -94,13 +95,28 @@ const clearCompletedTasks = () => {
     const tasks = listContainer.children;
 
     for ( let i = 0; i < tasks.length; i++) {
-        if (!tasks[i].classList.contains(`.list-checked`)) {
+        if (tasks[i].classList.contains(`list-checked`)) {
             listContainer.removeChild(tasks[i]);
         }
     }
 }
+// buttons remain active
 
+filterButtons.forEach(button => {
+   button.addEventListener(`click`, () => {
+    filterButtons.forEach(btn => btn.classList.remove(`active`));
+    clearButton.classList.remove(`active`);
 
+    button.classList.add(`active`);
+   })
+})
+
+clearButton.addEventListener(`click`, ()=>{
+    filterButtons.forEach(btn => btn.classList.remove(`active`));
+    
+
+    clearButton.classList.add(`active`);
+})
 
 
 

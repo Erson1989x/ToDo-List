@@ -7,7 +7,23 @@
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+:root {
+    --white: #fff;
+    --darkOrange: #e66465;
+    --gradient: #9198e5;
+    --brown: #555;
+    --navy: #002765;
+    --snow: #edeef0;
+    --whiteSnow: #e6e6e6;
+
+}
+
 /* --- Main Content --- */
+
+.list-container {
+    max-height: 220px;
+    overflow-y: auto;
+}
 
 .todo-list-container {
     width: 100%;
@@ -16,20 +32,28 @@
     padding: 10px;
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: stretch;
+    flex-direction: column;
 }
 
 .todo-application {
-    width: 300px;
-    min-height: 500px;
+    width: 100%;
+    min-height: 400px;
+    margin-left: auto;
+    margin-right: auto;
     padding: 24px;
-    background: #fff;
+    background: var(--white);
     margin-top: 50px;
-    border-radius: 8px;
+    border-radius: 8px 8px 0 0;
+    border-bottom: none;
+    border-top: 1px solid var(--brown);
+    border-left: 1px solid var(--brown);
+    border-right: 1px solid var(--brown);
+    box-shadow: -27px -30px 37px -16px rgba(30, 83, 167, 0.5);
 }
 
 .todo-application h1 {
-    color: #002765;
+    color: var(--navy);
     display: flex;
     align-items: center;
     font-size: 26px;
@@ -44,7 +68,7 @@
     display: flex;
     text-align: center;
     justify-content: space-between;
-    background: #edeef0;
+    background: var(--snow);
     border-radius: 30px;
     margin-top: 20px;
 
@@ -62,16 +86,16 @@
     border: none;
     outline: none;
     padding: 16px;
-    background: #e66465;
-    color: #fff;
+    background: var(--darkOrange);
+    color: var(--white);
     font-size: 16px;
     cursor: pointer;
     border-radius: 100px;
+    border: 1px solid var(--darkOrange);
 }
 .input-container button:hover {
-    background: #fff;
-    color: #e66465;
-    border: 1px solid #e66465;
+    background: var(--white);
+    color: var(--darkOrange);
 }
 /* --- List content --- */
 
@@ -102,7 +126,7 @@ ul li::before {
 }
 
 .list-checked {
-    color: #555;
+    color: var(--brown);
     text-decoration: line-through;
 }
 
@@ -112,8 +136,8 @@ ul li::before {
 
 .list-container li .del-button {
     margin-left: 10px;
-    background-color: #e66465;
-    color: #fff;
+    background-color: var(--darkOrange);
+    color: var(--white);
     border-radius: 50px;
     border: none;
     width: 35px;
@@ -121,27 +145,36 @@ ul li::before {
     text-align: center;
     font-size: 12px;
     padding: 8px;
+    border: 1px solid var(--darkOrange);
+    cursor: pointer;
 }
 
 .list-container li .del-button:hover {
-    color: #e66465;
-    background-color: #fff;
-    border: 1px solid #e66465;
+    color: var(--darkOrange);
+    background-color: var(--white);
 }
 
 /* --- Bottom --- */
 
 .todos-bottom {
-    width: 250px;
+    width: 100%;
     height: 100px;
+    margin-left: auto;
+    margin-right: auto;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
-    background: #9198e5;
-    border-top: 1px solid #e6e6e6;
-    border-radius: 6px;
+    background: var(--gradient);
+    border-top: 1px solid var(--whiteSnow);
+    border-radius: 0 0 8px 8px;
+    border-top: none;
+    border-bottom: 1px solid var(--brown);
+    border-left: 1px solid var(--brown);
+    border-right: 1px solid var(--brown);
+    box-shadow: -13px 19px 16px -14px rgba(167,30,30,0.99);
+    margin-bottom: 24px;
 }
 
 .filter-buttons {
@@ -150,59 +183,77 @@ ul li::before {
 }
 
 .filter-buttons button {
-    background: #e66465;
+    background: var(--darkOrange);
     border: none;
     cursor: pointer;
-    color: #fff;
+    color: var(--white);
     padding: 4px;
     border-radius: 50px;
+    border: 1px solid var(--darkOrange);
 }
 .clear-completed {
-    background: #e66465;
-    color: #fff;
+    background: var(--darkOrange);
+    color: var(--white);
     border: none;
-    cursor: pointer;
     border-radius: 50px;
     padding: 4px;
+    border: 1px solid var(--darkOrange);
 }
 
 .clear-completed:hover {
-    background: #fff;
-    color: #e66465;
-    border: 1px solid #e66465;
+    background: var(--white);
+    color: var(--darkOrange);
 }
 
 .filter-buttons button:hover {
-    background: #fff;
-    color: #e66465;
-    border: 1px solid #e66465;
+    background: var(--white);
+    color: var(--darkOrange);
+
+}
+
+.filter-buttons button.active {
+    background: var(--white);
+    color: var(--darkOrange);
+    border: 1px solid var(--darkOrange);
+}
+
+.clear-completed.active {
+    background: var(--white);
+    color: var(--darkOrange);
+    border: 1px solid var(--darkOrange);
 }
 
 /* --- Media --- */
 
 @media screen and (min-width: 768px) {
+    .list-container {
+        max-height: 380px;
+    }
     .todo-application {
-        width: 600px;
-        min-height: 700px;
+        max-width: 500px;
+        min-height: 600px;
     }
 
     .todos-bottom{
-        width: 550px;
+        max-width:500px;
         height: 100px;
     }
 
     .list-container li .del-button{
         width: 45px;
         height: 45px;
+        font-size: 14px;
     }
 
     .filter-buttons button {
-        width: 100px;
+        width: 80px;
         height: 35px;
+        font-size: 16px;
     }
     .clear-completed {
-        width: 100px;
+        width: 80px;
         height: 35px;
+        font-size: 16px;
     }
     ul li::before {
         top: 22px;
